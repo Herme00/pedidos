@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Fórum de Alunos - Dois Talentos</title>
+   
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <style>
+      * {
+         margin: 0;
+         padding: 0;
+         box-sizing: border-box;
+      }
+
+      body {
+         font-family: 'Arial', sans-serif;
+         line-height: 1.6;
+         color: #333;
+         background-color: #E6F3E6;
+      }
+
+      header {
+         background-color: #ffffff;
+         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+         position: sticky;
+         top: 0;
+         z-index: 100;
+      }
+
+      .header-container {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         max-width: 1200px;
+         margin: 0 auto;
+         padding: 1rem;
+      }
+
+      .logoRD .logo {
+         display: flex;
+         align-items: center;
+         text-decoration: none;
+         color: #90D590;
+      }
+
+      .logoRD .logo1 {
+         width: 50px;
+         height: 50px;
+         margin-right: 10px;
+         border-radius: 50%;
+      }
+
+      nav ul {
+         display: flex;
+         list-style: none;
+         align-items: center;
+      }
+
+      nav ul li {
+         margin-left: 20px;
+      }
+
+      nav ul li a {
+         text-decoration: none;
+         color: #90D590;
+         font-weight: 500;
+         transition: color 0.3s ease;
+      }
+
+      nav ul li a:hover, 
+      nav ul li a.active {
+         color: #60C660;
+      }
+
+      .btn-entrar {
+         background-color: #60C660;
+         color: white;
+         padding: 8px 15px;
+         border-radius: 20px;
+         transition: background-color 0.3s ease;
+      }
+
+      .forum-container {
+         max-width: 1200px;
+         margin: 2rem auto;
+         display: grid;
+         grid-template-columns: 250px 1fr;
+         gap: 2rem;
+      }
+
+      .forum-sidebar {
+         background-color: white;
+         border-radius: 8px;
+         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+         padding: 1rem;
+      }
+
+      .forum-sidebar h3 {
+         color: #90D590;
+         border-bottom: 3px solid #60C660;
+         padding-bottom: 10px;
+         margin-bottom: 1rem;
+      }
+
+      .forum-sidebar ul {
+         list-style: none;
+      }
+
+      .forum-sidebar ul li {
+         margin-bottom: 0.5rem;
+      }
+
+      .forum-sidebar ul li a {
+         text-decoration: none;
+         color: #333;
+         display: flex;
+         align-items: center;
+         transition: color 0.3s ease;
+      }
+
+      .forum-sidebar ul li a:hover {
+         color: #60C660;
+      }
+
+      .forum-sidebar ul li a i {
+         margin-right: 10px;
+         color: #90D590;
+      }
+
+      .forum-main {
+         background-color: white;
+         border-radius: 8px;
+         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+         padding: 2rem;
+      }
+
+      .forum-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 2rem;
+      }
+
+      .forum-header h2 {
+         color: #90D590;
+         border-bottom: 3px solid #60C660;
+         padding-bottom: 10px;
+      }
+
+      .create-post-btn {
+         background-color: #60C660;
+         color: white;
+         border: none;
+         padding: 0.5rem 1rem;
+         border-radius: 4px;
+         cursor: pointer;
+         transition: background-color 0.3s ease;
+      }
+
+      .create-post-btn:hover {
+         background-color: #40A540;
+      }
+
+      .forum-post {
+         border-bottom: 1px solid #C2E0C2;
+         padding: 1rem 0;
+         display: flex;
+         align-items: start;
+      }
+
+      .post-avatar {
+         width: 50px;
+         height: 50px;
+         border-radius: 50%;
+         margin-right: 1rem;
+      }
+
+      .post-content {
+         flex-grow: 1;
+      }
+
+      .post-header {
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         margin-bottom: 0.5rem;
+      }
+
+      .post-header h4 {
+         color: #90D590;
+         margin-right: 1rem;
+      }
+
+      .post-header .post-date {
+         color: #666;
+         font-size: 0.8rem;
+      }
+
+      .post-actions {
+         display: flex;
+         align-items: center;
+         margin-top: 0.5rem;
+      }
+
+      .post-actions button {
+         background: none;
+         border: none;
+         color: #90D590;
+         margin-right: 1rem;
+         cursor: pointer;
+         transition: color 0.3s ease;
+      }
+
+      .post-actions button:hover {
+         color: #60C660;
+      }
+
+      footer {
+         background-color: #90D590;
+         color: white;
+         text-align: center;
+         padding: 1rem;
+      }
+
+      @media (max-width: 768px) {
+         .forum-container {
+            grid-template-columns: 1fr;
+         }
+      }
+   </style>
+</head>
+<body>
+   <header>
+      <div class="header-container">
+         <div class="logoRD">
+            <a href="index.html" class="logo">
+               <img src="img/download.jfif" alt="Logo Dois Talentos" class="logo1">
+               <h1>Dois Talentos</h1>
+            </a>
+         </div>
+         <nav>
+            <ul>
+               <li><a href="index.html">Início</a></li>
+               <li><a href="serviços.html">Serviços</a></li>
+               <li><a href="contato.html">Contato</a></li>
+               <li><a href="biblioteca.html">Biblioteca</a></li>
+               <li><a href="eventos.html">Eventos</a></li>
+               <li><a href="noticias.html">Notícias</a></li>
+               <li><a href="forum.html" class="active">Fórum</a></li>
+               <li><a href="login-portal.html" class="btn-entrar">Portal</a></li>
+            </ul>
+         </nav>
+      </div>
+   </header>
+
+   <div class="forum-container">
+      <div class="forum-sidebar">
+         <h3>Categorias</h3>
+         <ul>
+            <li><a href="#"><i class="fas fa-graduation-cap"></i> Cursos</a></li>
+            <li><a href="#"><i class="fas fa-laptop-code"></i> Tecnologia</a></li>
+            <li><a href="#"><i class="fas fa-puzzle-piece"></i> Projetos</a></li>
+            <li><a href="#"><i class="fas fa-briefcase"></i> Oportunidades</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Vida Estudantil</a></li>
+            <li><a href="#"><i class="fas fa-globe"></i> Intercâmbio</a></li>
+         </ul>
+      </div>
+
+      <div class="forum-main">
+         <div class="forum-header">
+            <h2>Discussões Recentes</h2>
+            <button class="create-post-btn">Criar Nova Publicação</button>
+         </div>
+
+         <div class="forum-post">
+            <img src="/api/placeholder/50/50" alt="Avatar" class="post-avatar">
+            <div class="post-content">
+               <div class="post-header">
+                  <h4>Maria Silva</h4>
+                  <span class="post-date">Há 2 horas</span>
+               </div>
+               <p>Alguém tem dicas para o projeto final de programação? Estou tendo dificuldades com a parte de backend.</p>
+               <div class="post-actions">
+                  <button><i class="fas fa-comment"></i> 5 Comentários</button>
+                  <button><i class="fas fa-heart"></i> Curtir</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="forum-post">
+            <img src="/api/placeholder/50/50" alt="Avatar" class="post-avatar">
+            <div class="post-content">
+               <div class="post-header">
+                  <h4>João Santos</h4>
+                  <span class="post-date">Ontem</span>
+               </div>
+               <p>Compartilhando uma oportunidade de estágio em desenvolvimento web. Quem tiver interesse, me chama!</p>
+               <div class="post-actions">
+                  <button><i class="fas fa-comment"></i> 12 Comentários</button>
+                  <button><i class="fas fa-heart"></i> Curtir</button>
+               </div>
+            </div>
+         </div>
+
+         <div class="forum-post">
+            <img src="/api/placeholder/50/50" alt="Avatar" class="post-avatar">
+            <div class="post-content">
+               <div class="post-header">
+                  <h4>Ana Rodrigues</h4>
+                  <span class="post-date">Há 1 dia</span>
+               </div>
+               <p>Precisando de ajuda com o trabalho de redes de computadores. Alguém pode me explicar conceitos de topologia de rede?</p>
+               <div class="post-actions">
+                  <button><i class="fas fa-comment"></i> 3 Comentários</button>
+                  <button><i class="fas fa-heart"></i> Curtir</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <footer>
+      <p>&copy; 2024 Dois Talentos - Escola Técnica. Todos os direitos reservados.</p>
+   </footer>
+</body>
+</html>
